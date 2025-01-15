@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "voice-bot"
+version = "0.1.0"
+description = "A sample voice bot app"
+authors = ["Akshat Gupta <akshatwillrock@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pipecat-ai = "^0.0.52"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
