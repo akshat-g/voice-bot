@@ -10,7 +10,23 @@ st.title("Voice-Bot")
 # Add an agent
 st.header("Add an Agent")
 name = st.text_input("Name")
-config = st.text_area("Configuration (JSON format)")
+
+try:
+    # Create a text area for JSON input
+    config = st.text_area("Configuration (JSON format)", height=200)
+    
+    if config:
+        # Try to parse the JSON to validate it
+        parsed_config = json.loads(config)
+        
+        # Display the beautified JSON
+        st.code(json.dumps(parsed_config, indent=2), language="json")
+        
+        # Optional: Add a success message
+        st.success("Valid JSON configuration")
+except json.JSONDecodeError:
+    if config:  # Only show error if user has entered something
+        st.error("Invalid JSON format. Please check your input.")
 
 if st.button("Add Agent"):
     try:

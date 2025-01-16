@@ -13,6 +13,7 @@ uvicorn = "^0.34.0"
 sqlalchemy = "^2.0.37"
 pydantic = "^2.10.5"
 streamlit = "^1.41.1"
+streamlit-webrtc = "^0.47.9"
 
 
 [build-system]
