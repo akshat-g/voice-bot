@@ -90,3 +90,9 @@ ENV/
 env.bak/
 venv.bak/
 
+# DB
+agents.db
+
+# pyright config
+pyrightconfig.json
+
