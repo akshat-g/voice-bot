@@ -37,3 +37,7 @@ class AgentController:
         if not agent:
             raise HTTPException(status_code=404, detail="Agent not found")
         return agent
+
+    @staticmethod
+    def get_all_agents(db: Session):
+        return AgentService.get_all_agents(db)

@@ -1,3 +1,4 @@
+from typing import List
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 
@@ -27,3 +28,8 @@ def delete_agent(agent_id: str, db: Session = Depends(get_db)):
 @router.get("/by-name/{agent_name}", response_model=AgentResponse)
 def get_agent_by_name(agent_name: str, db: Session = Depends(get_db)):
     return AgentController.get_agent_by_name(db, agent_name)
+
+@router.get("/", response_model=List[AgentResponse])
+def get_all_agents(db: Session = Depends(get_db)):
+    return AgentController.get_all_agents(db)
+    

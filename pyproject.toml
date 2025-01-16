@@ -12,6 +12,7 @@ fastapi = "^0.115.6"
 uvicorn = "^0.34.0"
 sqlalchemy = "^2.0.37"
 pydantic = "^2.10.5"
+streamlit = "^1.41.1"
 
 
 [build-system]

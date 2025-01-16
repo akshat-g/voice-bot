@@ -42,3 +42,7 @@ class AgentService:
     @staticmethod
     def get_agent_by_name(db: Session, name: str):
         return db.query(Agent).filter(Agent.name == name).first()
+
+    @staticmethod
+    def get_all_agents(db: Session):
+        return db.query(Agent).all()
