@@ -23,28 +23,7 @@
       "trigger_user_online_message_after": 6
     },
     "tools_config": {
-      "api_tools": {
-        "tools": [
-          {
-            "name": "transfer_call",
-            "parameters": null,
-            "description": "This tool is used to transfer calls in the voicebot system to a human agent when the user requests it 'Please transfer me to a human agent'"
-          }
-        ],
-        "tools_params": {
-          "transfer_call": {
-            "url": null,
-            "param": {
-              "domain": null,
-              "stream_id": null,
-              "ah_call_id": null,
-              "plivo_call_uuid": null
-            },
-            "method": null,
-            "api_token": null
-          }
-        }
-      },
+      "api_tools": null,
       "llm_agent": {
         "routes": null,
         "agent_type": "simple_llm_agent",
