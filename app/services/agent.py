@@ -16,11 +16,11 @@ class AgentService:
 
     @staticmethod
     def get_agent(db: Session, agent_id: str):
-        return db.query(Agent).filter(Agent.id == agent_id).first()
+        return db.query(Agent).filter(Agent.id == agent_id).one_or_none()
 
     @staticmethod
     def update_agent(db: Session, agent_id: str, agent_data: AgentUpdate):
-        agent = db.query(Agent).filter(Agent.id == agent_id).first()
+        agent = db.query(Agent).filter(Agent.id == agent_id).one_or_none()
         if not agent:
             return None
         if agent_data.name:
@@ -33,7 +33,7 @@ class AgentService:
 
     @staticmethod
     def delete_agent(db: Session, agent_id: str):
-        agent = db.query(Agent).filter(Agent.id == agent_id).first()
+        agent = db.query(Agent).filter(Agent.id == agent_id).one_or_none()
         if agent:
             db.delete(agent)
             db.commit()
@@ -41,8 +41,15 @@ class AgentService:
 
     @staticmethod
     def get_agent_by_name(db: Session, name: str):
-        return db.query(Agent).filter(Agent.name == name).first()
+        return db.query(Agent).filter(Agent.name == name).one_or_none()
 
     @staticmethod
     def get_all_agents(db: Session):
         return db.query(Agent).all()
+    
+    @staticmethod
+    def chat_with_agent(db: Session, agent_name: str):
+        agent = db.query(Agent).filter(Agent.name == agent_name).one_or_none()
+        if not agent:
+            return None
+        

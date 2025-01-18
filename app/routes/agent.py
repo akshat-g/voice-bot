@@ -4,7 +4,7 @@ from sqlalchemy.orm import Session
 
 from app.controllers.agent import AgentController
 from app.db.database import get_db
-from app.schemas.agent import AgentCreate, AgentResponse, AgentUpdate
+from app.schemas.agent import AgentChatResponse, AgentCreate, AgentResponse, AgentUpdate
 
 
 router = APIRouter()
@@ -32,4 +32,7 @@ def get_agent_by_name(agent_name: str, db: Session = Depends(get_db)):
 @router.get("/", response_model=List[AgentResponse])
 def get_all_agents(db: Session = Depends(get_db)):
     return AgentController.get_all_agents(db)
-    
+
+@router.get("/by-name/{agent_name}/chat", response_model=AgentChatResponse)
+def chat_with_agent(agent_name: str, db: Session = Depends(get_db)):
+    return AgentController.chat_with_agent(db, agent_name)

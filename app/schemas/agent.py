@@ -16,3 +16,6 @@ class AgentResponse(BaseModel):
 
     class Config:
         from_attributes = True
+        
+class AgentChatResponse(BaseModel):
+    room_url: str

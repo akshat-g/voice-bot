@@ -41,3 +41,10 @@ class AgentController:
     @staticmethod
     def get_all_agents(db: Session):
         return AgentService.get_all_agents(db)
+
+    @staticmethod
+    def chat_with_agent(db: Session, agent_name: str):
+        agent = AgentService.chat_with_agent(db, agent_name)
+        if not agent:
+            raise HTTPException(status_code=404, detail="Agent not found")
+        return agent
