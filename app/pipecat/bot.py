@@ -69,8 +69,6 @@ class PipecatBot:
         self.pipeline_config: dict = pipeline_config
         self.kwargs: dict = kwargs
         self.pipeline: Pipeline | None = None
-        self.conversation_history: list = []
-        self.is_transferred: bool = False
         self.room_url: str = os.getenv("DAILY_ROOM_URL", "")
 
     class DictWithMissing(dict):
@@ -96,7 +94,7 @@ class PipecatBot:
         transport = DailyTransport(
             room_url=self.room_url,
             token="",
-            bot_name="Bot Name",
+            bot_name="KuzushiLabs",
             params=DailyParams(audio_out_enabled=True)
         )
         tts_config_data = self.pipeline_config.get("tts", {})
@@ -110,7 +108,6 @@ class PipecatBot:
             model=tts_config_data.get("model", ""),
             params=ElevenLabsTTSService.InputParams(**tts_config_data.get("input_params", {})),
         )
-        logger.info(f'STT config {stt_config_data}')
         stt = DeepgramSTTService(api_key=os.getenv("DEEPGRAM_AUTH_TOKEN", ""), 
                                                     live_options=LiveOptions(**stt_config_data.get("live_options", {})))
         logger.info(f'LLM config {llm_config_data}')
